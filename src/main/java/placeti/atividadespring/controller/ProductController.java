@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import placeti.atividadespring.domain.Product;
 import placeti.atividadespring.requests.ProductPostRequestBody;
 import placeti.atividadespring.requests.ProductPutRequestBody;
+import placeti.atividadespring.service.ProductService;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> save(@RequestBody ProductPostRequestBody productPostRequestBody) {
-        return ResponseEntity.created(productService.save(productPostRequestBody));
+        return new ResponseEntity<>(productService.save(productPostRequestBody), HttpStatus.CREATED);
     }
 
     @PutMapping
